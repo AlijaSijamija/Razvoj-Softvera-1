@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewData["Title"] = "AjaxPrikaz";
+}
+@model AjaxPrikazVM
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Učenik</th>
+            <th>Prosjek ocjena</th>
+            <th>Pristupio ispitu</th>
+            <th>Rezultat maturskog</th>
+            <th>Akcija</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in Model.podaci)
+        {
+            <tr>
+                <td>@x.Ucenik</td>
+                <td>@x.ProsjekOcjena</td>
+                <td>
+                    <a ajax-poziv="da" ajax-rezultat="ajaxID" style="background-color:@(x.Prisupio?"green":"red"); padding:5px" 
+                       href="/OdrzanaNastava/@(@x.Prisupio?"UcenikJePristupio":"UcenikJeOdustan")?Id=@x.UcesnikID">
+                    @(x.Prisupio?"DA":"NE")</a>
+                </td>
+                @if (x.Prisupio == true)
+                {
+                    <td>
+                        <form ajax-poziv="da" ajax-rezulat="ajaxID" asp-action="Bodovi">
+                            <input type="hidden" name="ucesnikID" value="@x.UcesnikID"/>
+                            <input type="text" style="text-align:center" name="bodovi" value="@x.Bodovi"/>
+                            <input style="visibility:hidden" type="submit"/>
+                        </form>
+                    </td>
+                    <td>
+                        <a ajax-poziv="da" ajax-rezultat="ajaxID" asp-action="AjaxUredi" 
+                           asp-route-ucenikID="@x.UcesnikID">Uredi</a>
+                    </td>
+                }
+                else
+                {
+                    <td></td>
+                    <td></td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>

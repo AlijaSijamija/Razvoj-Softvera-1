@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewData["Title"] = "AjaxUredi";
+}
+@model AjaxUrediVM
+<h2>AjaxUredi</h2>
+
+<form asp-action="AjaxSnimi">
+    <label>Učenik: @Model.Ucesnik</label>
+    <br/>
+    <label>Bodovi:</label>
+    <input type="number" min="1" max="100" asp-for="bodovi"/>
+    <input type="hidden" asp-for="nastavnikID"/>
+    <input type="hidden" asp-for="UcesnikID"/>
+    <input type="submit" class="btn btn-primary" value="Snimi"/>
+</form>

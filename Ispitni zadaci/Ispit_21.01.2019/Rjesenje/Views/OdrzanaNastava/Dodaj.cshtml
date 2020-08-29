@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewData["Title"] = "Dodaj";
+}
+@model ONDodajVM
+<h2>Dodaj</h2>
+
+<form action="Snimi">
+    <input type="hidden" asp-for="NastavnikID" />
+    <input type="hidden" asp-for="SGID" />
+    <label>Škola:</label>
+    <select class="form-control" asp-for="SkolaID" asp-items="@Model.Skole"></select>
+    <br />
+    <label>Nastavnik: @Model.Nastavnik</label>
+    <br />
+    <label>Školska godina:</label>
+    <select class="form-control" asp-for="SkolskaGodinaID" asp-items="@Model.SkolskaGodina"></select>
+    <br />
+    <label>Datum:</label>
+    <input class="form-control" type="date" asp-for="Datum" />
+    <br />
+    <label>Predmet:</label>
+    <select class="form-control" asp-for="PredmetID" asp-items="@Model.Predmeti"></select>
+    <br />
+    <input type="submit" class="btn btn-primary" value="Snimi" />
+</form>

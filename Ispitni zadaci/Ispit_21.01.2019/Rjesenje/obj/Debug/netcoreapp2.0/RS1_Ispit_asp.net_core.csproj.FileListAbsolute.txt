@@ -1,0 +1,16 @@
+C:\Users\admin\Desktop\SEPT\RS1\Ispitni zadaci\Ispit_21.01.2019\Rjesenje\bin\Debug\netcoreapp2.0\appsettings.Development.json
+C:\Users\admin\Desktop\SEPT\RS1\Ispitni zadaci\Ispit_21.01.2019\Rjesenje\bin\Debug\netcoreapp2.0\appsettings.json
+C:\Users\admin\Desktop\SEPT\RS1\Ispitni zadaci\Ispit_21.01.2019\Rjesenje\bin\Debug\netcoreapp2.0\bundleconfig.json
+C:\Users\admin\Desktop\SEPT\RS1\Ispitni zadaci\Ispit_21.01.2019\Rjesenje\bin\Debug\netcoreapp2.0\Properties\launchSettings.json
+C:\Users\admin\Desktop\SEPT\RS1\Ispitni zadaci\Ispit_21.01.2019\Rjesenje\bin\Debug\netcoreapp2.0\RS1_Ispit_asp.net_core.deps.json
+C:\Users\admin\Desktop\SEPT\RS1\Ispitni zadaci\Ispit_21.01.2019\Rjesenje\bin\Debug\netcoreapp2.0\RS1_Ispit_asp.net_core.runtimeconfig.json
+C:\Users\admin\Desktop\SEPT\RS1\Ispitni zadaci\Ispit_21.01.2019\Rjesenje\bin\Debug\netcoreapp2.0\RS1_Ispit_asp.net_core.runtimeconfig.dev.json
+C:\Users\admin\Desktop\SEPT\RS1\Ispitni zadaci\Ispit_21.01.2019\Rjesenje\bin\Debug\netcoreapp2.0\RS1_Ispit_asp.net_core.dll
+C:\Users\admin\Desktop\SEPT\RS1\Ispitni zadaci\Ispit_21.01.2019\Rjesenje\bin\Debug\netcoreapp2.0\RS1_Ispit_asp.net_core.pdb
+C:\Users\admin\Desktop\SEPT\RS1\Ispitni zadaci\Ispit_21.01.2019\Rjesenje\obj\Debug\netcoreapp2.0\RS1_Ispit_asp.net_core.csprojAssemblyReference.cache
+C:\Users\admin\Desktop\SEPT\RS1\Ispitni zadaci\Ispit_21.01.2019\Rjesenje\obj\Debug\netcoreapp2.0\RS1_Ispit_asp.net_core.AssemblyInfoInputs.cache
+C:\Users\admin\Desktop\SEPT\RS1\Ispitni zadaci\Ispit_21.01.2019\Rjesenje\obj\Debug\netcoreapp2.0\RS1_Ispit_asp.net_core.AssemblyInfo.cs
+C:\Users\admin\Desktop\SEPT\RS1\Ispitni zadaci\Ispit_21.01.2019\Rjesenje\obj\Debug\netcoreapp2.0\RS1_Ispit_asp.net_core.csproj.CoreCompileInputs.cache
+C:\Users\admin\Desktop\SEPT\RS1\Ispitni zadaci\Ispit_21.01.2019\Rjesenje\obj\Debug\netcoreapp2.0\RS1_Ispit_asp.net_core.dll
+C:\Users\admin\Desktop\SEPT\RS1\Ispitni zadaci\Ispit_21.01.2019\Rjesenje\obj\Debug\netcoreapp2.0\RS1_Ispit_asp.net_core.pdb
+C:\Users\admin\Desktop\SEPT\RS1\Ispitni zadaci\Ispit_21.01.2019\Rjesenje\obj\Debug\netcoreapp2.0\RS1_Ispit_asp.net_core.genruntimeconfig.cache

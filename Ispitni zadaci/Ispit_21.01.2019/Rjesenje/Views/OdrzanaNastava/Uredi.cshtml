@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewData["Title"] = "Uredi";
+}
+@model ONUrediVM
+<h2>Uredi</h2>
+
+<form asp-action="SnimiUredi">
+    <input type="hidden" asp-for="Datum" />
+    <input type="hidden" asp-for="PredmetID" />
+    <input type="hidden" asp-for="MaturskiIspitID" />
+    <label>Datum: @Model.Datum</label>
+    <br />
+    <label>Predmet: @Model.Predmet</label>
+    <br />
+    <label>Napoeman:</label>
+    <input asp-for="Napomena" type="text" value="@Model.Napomena"/>
+    <br />
+    <input value="Snimi" class="btn btn-primary" type="submit" />
+    <br/>
+</form>
+<div id="ajaxID" style="border:2px solid black"></div>
+
+<script>
+    $(function () {
+        $.get("/OdrzanaNastava/AjaxPrikaz?IspitID=@Model.MaturskiIspitID", function (data) {
+            $("#ajaxID").html(data)
+        })
+    })
+</script>
