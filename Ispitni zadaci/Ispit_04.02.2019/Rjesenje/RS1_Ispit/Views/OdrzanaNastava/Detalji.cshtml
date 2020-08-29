@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewData["Title"] = "Detalji";
+}
+@model ONDetaljiVM
+<h2>Detalji</h2>
+
+<form>
+    @*<label>Datum: @Model.Datum</label>
+        <br />
+        <label>Skola/Odjeljenje/Predmet: @Model.SkOdljenjePredmet</label>
+        <br />
+        <label>Sadrzaj casa: @Model.Sadrzaj</label>
+        <br />*@
+    <label>Datum</label>
+    <input asp-for="Datum" readonly class="form-control" />
+    <label>Skola/Odjeljenje/Predmet</label>
+    <input asp-for="SkOdljenjePredmet" readonly class="form-control" />
+    <label>Sadržaj časa</label>
+    <textarea asp-for="Sadrzaj" readonly class="form-control"></textarea>
+</form>
+<div id="ajaxID" style="border:1px solid black; padding:5px"></div>
+
+<script>
+    $(function () {
+        $.get("/OdrzanaNastava/DetaljiUcesnici?ID=@Model.OdrzanCasID", function (data) {
+            $("#ajaxID").html(data);
+        })
+    })
+</script>

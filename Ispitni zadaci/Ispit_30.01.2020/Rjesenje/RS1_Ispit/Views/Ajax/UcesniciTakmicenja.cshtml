@@ -1,0 +1,72 @@
+﻿
+@{
+    ViewData["Title"] = "UcesniciTakmicenja";
+}
+@model AjaxPrikazVM 
+<h2>UcesniciTakmicenja</h2>
+
+<table class="table table-bordered text-center">
+    <thead>
+        <tr>
+            <th>Odjeljenje</th>
+            <th>Broj u dnevniku</th>
+            <th>Pristupio</th>
+            <th>Bodovi</th>
+            <th>Akcija</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in Model.redovi)
+        {
+        <tr>
+            <td>@x.Odjeljenje</td>
+            <td>@x.BrUDnevniku</td>
+            @if (Model.Zakljucano)
+            {
+                <td>
+                    <a style="padding:8px; color:white; background-color:@(x.Pristupio? "green":"red")">
+                        @(x.Pristupio?"DA":"NE")
+                    </a>
+                </td>
+                <td style="text-align:center">@x.Bodovi</td>
+                <td></td>
+            }
+            else
+            {
+                <td>
+                    <a style="padding:8px; background-color:@(x.Pristupio? "green":"red"); color:white"
+                       asp-action="@(x.Pristupio?"UcesnikNijePrisutpio":"UcesnikJePristupio")"
+                       asp-route-ucesnikID="@x.TakmicenjeUcesnikID">
+                        @(x.Pristupio?"DA":"NE")
+                    </a>
+                </td>
+                <td>
+                    <form id="forma-@x.TakmicenjeUcesnikID" ajax-poziv="da" ajax-rezultat="ajaxID" asp-action="UpdateBod">
+                        <input type="hidden" name="ucesnikID" value="@x.TakmicenjeUcesnikID" />
+                        <input name="bodovi" value="@x.Bodovi" id="bodovi-@x.TakmicenjeUcesnikID" />
+                        <input type="submit" style="visibility:hidden" />
+                    </form>
+                    <script>
+                        $("#bodovi-@x.TakmicenjeUcesnikID").change(function () {
+                            $.ajax{
+                                type: "POST",
+                                    url: "/Ajax/UpdateBod",
+                                    data: $("#forma-@x.TakmicenjeUcesnikID").serialize(),
+                                    success: function(data) {
+                                        $("#bodovi-@x.TakmicenjeUcesnikID").html(data);
+                                    }
+                            }
+                        })
+                    </script>
+                </td>
+                <td>
+                    <a ajax-poziv="da" ajax-rezultat="ajaxID" asp-action="Uredi" 
+                       asp-route-ucesnikID="@x.TakmicenjeUcesnikID">Uredi</a>
+                </td>
+            }
+        </tr>
+        }
+    </tbody>
+</table>
+<a ajax-poziv="da" ajax-rezultat="ajaxID" class="btn btn-primary" asp-action="DodajUcesnika" 
+   asp-route-tkmID="@Model.TakmicenjeID">Dodaj učesnika</a>

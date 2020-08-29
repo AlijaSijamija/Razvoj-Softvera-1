@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewData["Title"] = "Prikaz";
+}
+@model TakmicenjePrikazVM
+<h2>Prikaz</h2>
+
+<table class="table table-bordered" >
+    <thead>
+        <tr colspan="7">
+            <label>Škola domaći:</label>
+            <span>@Model.SkolaDomacin</span>
+            <br/>
+            <label>Razred:</label>
+            <span>@Model.Razred</span>
+        </tr>
+        <tr>
+            <th>
+                Takmičenje ID
+            </th>
+            <th>Predmet</th>
+            <th>Razred</th>
+            <th>Datum</th>
+            <th>Broj učesnika nisu izašli</th>
+            <th>Najbolji učesnik</th>
+            <th>Akcija</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var x in Model.Redovi)
+        {
+            <tr>
+                <td>@x.TakmicenjeID</td>
+                <td>@x.Predmet</td>
+                <td>@x.Razred</td>
+                <td>@x.Datum</td>
+                <td>@x.NisuPristupili</td>
+                <td>@x.NajboljiUcesnik</td>
+                <td>
+                    <a asp-action="Rezultat" asp-route-tkmID="@x.TakmicenjeID">Rezultati</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="/Takmicenje/Dodaj?skolaID=@Model.SkolaDomacinID" class="btn btn-primary">Dodaj</a>

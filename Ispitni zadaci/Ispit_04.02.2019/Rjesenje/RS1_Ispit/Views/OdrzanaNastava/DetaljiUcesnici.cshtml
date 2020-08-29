@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewData["Title"] = "DetaljiUcesnici";
+}
+@model ONDetaljiUcesnikVM
+<h2>DetaljiUcesnici</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Učenik</th>
+            <th>Ocjena</th>
+            <th>Prisutan</th>
+            <th>Opravdano odsutan</th>
+            <th>Akcija</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in Model.podaci)
+        {
+        <tr>
+            <td>@x.Ucenik</td>
+            @if (x.Prisutan)
+            {
+                <td>@x.Ocjena</td>
+            }
+            else
+            {
+                <td></td>
+            }
+            <td>
+                <a style="background-color:@(x.Prisutan?"green":"red"); color:white; text-align:center;
+                    padding:5px" ajax-poziv="da" ajax-rezultat="ajaxID"
+                   href="/OdrzanaNastava/@(@x.Prisutan?"UcenikJeOdsutan":"UcenikJePrisutan")?id=@x.OdrzanCasUcesnikID">
+                    @(x.Prisutan?"Prisutan":"Odustan")
+                </a>
+            </td>
+            @if (x.Prisutan)
+            {
+                <td></td>
+            }
+            else
+            {
+                <td>@(x.OpravdanoOdsutan ? "DA" : "NE")</td>
+            }
+            <td>
+                <a ajax-poziv="da" ajax-rezultat="ajaxID" 
+                   href="/OdrzanaNastava/@(@x.Prisutan?"Ocjena":"Odsutan")?id=@x.OdrzanCasUcesnikID">
+                    Uredi
+                </a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+<style>
+    a {
+        text-align:center
+    }
+</style>

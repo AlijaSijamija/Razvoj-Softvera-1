@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewData["Title"] = "Ocjena";
+}
+@model ONOcjenaVM
+<h2>Ocjena</h2>
+
+<form asp-action="SnimiOcjena">
+    <input type="hidden" asp-for="ONUcesnikID" />
+    <input type="hidden" asp-for="OCasID" />
+    <label>Učenik:</label>
+    <span>@Model.ONUcesnik</span>
+    <br />
+    <label>Ocjena:</label>
+    <input type="number" asp-for="Ocjena" />
+    <br />
+    <input type="submit" value="Snimi"/>
+</form>

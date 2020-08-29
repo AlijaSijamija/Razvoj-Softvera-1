@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewData["Title"] = "DodajUcesnika";
+}
+@model AjaxDodajVM 
+<h2>DodajUcesnika</h2>
+
+<form ajax-poziv="da" ajax-rezultat="ajaxID" asp-action="Snimi">
+    <input type="hidden" asp-for="TakmicenjeID" />
+    <label>Učenik:</label>
+    <select class="form-control" asp-for="UcenikID" asp-items="@Model.Ucenici"></select>
+    <br/>
+    <label>Bodovi:</label>
+    <input asp-for="bodovi" class="form-control" />
+    <input class="btn btn-primary" value="Snimi" type="submit" />
+</form>

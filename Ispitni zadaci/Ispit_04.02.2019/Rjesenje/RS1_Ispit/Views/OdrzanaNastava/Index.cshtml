@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+@model ONIndexVM
+<h2>Index</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th style="text-align:center">Ime i prezime nastavnika</th>
+            <th style="text-align:center">
+                Broj održanih časova u aktuelnoj
+                kalendarskoj godini
+            </th>
+            <th style="text-align:center">Akcija</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var x in Model.podaci)
+        {
+            <tr>
+                <td style="text-align:center">@x.Nastavnik</td>
+                <td style="text-align:center">@x.BrCasova</td>
+                <td style="text-align:center">
+                   <a asp-action="Prikaz" asp-route-NastavnikID="@x.NastavnikID">Odaberi</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
