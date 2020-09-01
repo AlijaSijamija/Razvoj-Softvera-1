@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewData["Title"] = "Rezultati";
+}
+@model TakmicenjeRezultatiVM
+<h2>Rezultati</h2>
+
+<label>Škola domačin: @Model.Skola</label>
+<br />
+<label>Predemt: @Model.Predmet</label>
+<br />
+<label>Razred: @Model.Razred</label>
+<br />
+<label>Datum: @Model.Datum</label>
+<br />
+@if (Model.Zakljucaj)
+{
+    <span>Zakljucano uređivanje</span>
+}
+else
+{
+    <a class="btn btn-primary" asp-action="Zakljucaj" asp-route-TkmID="@Model.TakmicenjeID">Zakljucaj</a>
+}
+<br />
+<div id="ajaxID" style="border:1px solid black"></div>
+<br />
+<a class="btn btn-primary" asp-action="Dodaj" asp-route-skID="@Model.SkolaID">Novo takmičenje</a>
+<br />
+
+<script>
+    $(function () {
+        $.get("/Ajax/Index?TkmID=@Model.TakmicenjeID", function (data) {
+            $("#ajaxID").html(data)
+        })
+    })
+</script>

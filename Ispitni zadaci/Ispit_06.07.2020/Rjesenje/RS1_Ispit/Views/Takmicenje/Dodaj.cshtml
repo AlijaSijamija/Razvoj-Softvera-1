@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewData["Title"] = "Dodaj";
+}
+@model TakmicenjeDodajVM
+<h2>Dodaj</h2>
+
+<form asp-action="Snimi">
+    <input type="hidden" asp-for="@Model.SkolaID"/>
+    <input type="hidden" asp-for="@Model.Datum"/>
+    <label>Predmet:</label>
+    <select class="form-control" asp-for="PredmetID" asp-items="@Model.Predmeti"></select>
+    <br/>
+    <label>Škola:</label>
+    <span>@Model.skola</span>
+    <br/>
+    <label>Datum:</label>
+    <input readonly type="date" asp-for="Datum"/>
+    <br/>
+    <input type="submit" value="Snimi" />
+</form>

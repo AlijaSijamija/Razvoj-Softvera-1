@@ -1,0 +1,82 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+@model AjaxIndexVM
+<h2>Index</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Odjeljenje</th>
+            <th>Broj u dnevniku</th>
+            <th>Pristupio</th>
+            <th>Rezultat bodovi(max 100)</th>
+            <th>Akcija</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in Model.podaci)
+        {
+        <tr>
+            @if (Model.Zakljucano)
+            {
+                <td>@x.Odjeljenje</td>
+                <td>@x.BrDnevnik</td>
+                <td>
+                    <a style="background-color:@(x.Pristupio?"green":"red"); padding:5px; text-align:center">
+                        @(x.Pristupio?"DA":"NE")
+                    </a>
+                </td>
+                @if (x.Pristupio)
+                {
+                    <td>@x.bodovi</td>
+                    <td></td>
+                }
+                else
+                {
+                    <td style="text-align:center">X</td>
+                    <td></td>
+                }
+            }
+            else
+            {
+                <td>@x.Odjeljenje</td>
+                <td>@x.BrDnevnik</td>
+                <td>
+                    <a style="background-color:@(x.Pristupio?"green":"red"); padding:5px; text-align:center"
+                       asp-action="@(x.Pristupio?"UcenikJePristupio":"UcenikNijePristupio")"
+                       asp-route-TkmUcID="@x.TakmicenjeUcesnikID">
+                        @(x.Pristupio?"DA":"NE")
+                    </a>
+                </td>
+                @if (!x.Pristupio)
+                {
+                    <td style="text-align:center">X</td>
+                    <td></td>
+                }
+                else
+                {
+                    <td>
+                        <form ajax-poziv="da" ajax-rezultat="ajaxID" asp-action="UpdateBodova">
+                            <input type="hidden" name="UcesnikID" value="@x.TakmicenjeUcesnikID" />
+                            <input type="number" min="1" max="100" name="bod" value="@x.bodovi" 
+                                   style="text-align:center" />
+                            <input type="submit" style="visibility:hidden" />
+                        </form>
+                    </td>
+                    <td>
+                        <a ajax-poziv="da" ajax-rezultat="ajaxID" asp-action="Uredi" 
+                           asp-route-TkmUcID="@x.TakmicenjeUcesnikID">Uredi</a>
+                    </td>
+                }
+            }
+        </tr>
+        }
+    </tbody>
+</table>
+<br/>
+<a ajax-poziv="da" ajax-rezultat="ajaxID" asp-action="DodajUcesnika" asp-route-TkmID="@Model.TakmID"
+   class="btn btn-primary">
+    Dodaj učesnika</a>
+<br/>
